@@ -1,12 +1,6 @@
 <template>
-  <v-app dark>
-    <v-navigation-drawer
-      v-model="drawer"
-      :mini-variant="miniVariant"
-      :clipped="clipped"
-      fixed
-      app
-    >
+  <v-app>
+    <v-navigation-drawer clipped permanent app>
       <v-list>
         <v-list-item
           v-for="(item, i) in items"
@@ -24,8 +18,8 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-app-bar :clipped-left="clipped" fixed app>
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
+    <v-app-bar clipped-left app>
+      <v-app-bar-nav-icon />
       <v-toolbar-title v-text="title" />
       <v-spacer />
     </v-app-bar>
@@ -34,9 +28,6 @@
         <nuxt />
       </v-container>
     </v-content>
-    <v-footer :fixed="fixed" app>
-      <span>&copy; 2019</span>
-    </v-footer>
   </v-app>
 </template>
 
@@ -44,9 +35,6 @@
 export default {
   data() {
     return {
-      clipped: false,
-      drawer: false,
-      fixed: false,
       items: [
         {
           icon: 'mdi-apps',
@@ -59,9 +47,6 @@ export default {
           to: '/projects'
         }
       ],
-      miniVariant: false,
-      right: true,
-      rightDrawer: false,
       title: "Konny0311's page"
     }
   }

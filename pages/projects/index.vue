@@ -1,6 +1,6 @@
 <template>
   <div>
-    projects here
+    contents related to projects here
   </div>
 </template>
 
