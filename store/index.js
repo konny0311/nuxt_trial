@@ -1,5 +1,17 @@
 export const state = () => ({
-  isAuth: false
+  isAuth: false,
+  projects: [
+    {
+      name: 'first project',
+      technology: ['Python', 'OpenCV', 'AWS'],
+      description: 'description here'
+    },
+    {
+      name: 'second project',
+      technology: ['Python', 'OpenCV', 'AWS'],
+      description: 'description here'
+    }
+  ]
 })
 
 export const mutations = {
