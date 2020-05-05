@@ -26,6 +26,7 @@ export default {
   components: {},
   computed: {
     projects() {
+      this.$store.dispatch('getProjects')
       return this.$store.state.projects
     }
   }

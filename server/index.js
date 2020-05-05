@@ -6,6 +6,8 @@ app.get('/hello', (req, res) => {
     res.send('world')
 })
 
+const colSize = 4
+
 app.get('/projects', (req, res) => {
     const mysql = require('mysql');
     const connection = mysql.createConnection({
@@ -20,12 +22,18 @@ app.get('/projects', (req, res) => {
       if (error) {
         console.log(error);
       } 
-      var dat = [];
+      var dat = {'projects': []};
       for (var i = 0;i < row.length; i++) {
-        dat.push({id: row[i].id, name: row[i].name});
+        dat.projects.push({id: row[i].id, 
+                           name: row[i].name,
+                           technology: ['Python', 'OpenCV', 'AWS'],
+                           summary: row[i].summary,
+                           link:row[i].url,
+                           flex:colSize});
       }
       ret = JSON.stringify(dat);
       res.header('Content-Type', 'application/json; charset=utf-8')
       res.send(ret)
     });
+    connection.end();
 });

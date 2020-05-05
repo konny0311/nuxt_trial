@@ -1,96 +1,43 @@
-const colSize = 4
+// const colSize = 4
 
 export const state = () => ({
   isAuth: false,
-  projects: [
-    {
-      name: 'first project',
-      technology: ['Python', 'OpenCV', 'AWS'],
-      summary: 'summary here',
-      link: 'https://github.com/konny0311',
-      flex: colSize
-    },
-    {
-      name: 'second project',
-      technology: ['Python', 'OpenCV', 'AWS'],
-      summary: 'summary here',
-      link: 'https://github.com/konny0311',
-      flex: colSize
-    },
-    {
-      name: 'third project',
-      technology: ['Python', 'OpenCV', 'AWS'],
-      summary: 'summary here',
-      link: 'https://github.com/konny0311',
-      flex: colSize
-    },
-    {
-      name: 'fourth project',
-      technology: ['Python', 'OpenCV', 'AWS'],
-      summary: 'summary here',
-      link: 'https://github.com/konny0311',
-      flex: colSize
-    },
-    {
-      name: 'fifth project',
-      technology: ['Python', 'OpenCV', 'AWS'],
-      summary: 'summary here',
-      link: 'https://github.com/konny0311',
-      flex: colSize
-    },
-    {
-      name: 'sixth project',
-      technology: ['Python', 'OpenCV', 'AWS'],
-      summary: 'summary here',
-      link: 'https://github.com/konny0311',
-      flex: colSize
-    },
-    {
-      name: 'seventh project',
-      technology: ['Python', 'OpenCV', 'AWS'],
-      summary: 'summary here',
-      link: 'https://github.com/konny0311',
-      flex: colSize
-    },
-    {
-      name: 'eighth project',
-      technology: ['Python', 'OpenCV', 'AWS'],
-      summary: 'summary here',
-      link: 'https://github.com/konny0311',
-      flex: colSize
-    },
-    {
-      name: 'nineth project',
-      technology: ['Python', 'OpenCV', 'AWS'],
-      summary: 'summary here',
-      link: 'https://github.com/konny0311',
-      flex: colSize
-    },
-    {
-      name: 'tenth project',
-      technology: ['Python', 'OpenCV', 'AWS'],
-      summary: 'summary here',
-      link: 'https://github.com/konny0311',
-      flex: colSize
-    },
-    {
-      name: 'eleventh project',
-      technology: ['Python', 'OpenCV', 'AWS'],
-      summary: 'summary here',
-      link: 'https://github.com/konny0311',
-      flex: colSize
-    }
-  ]
+  projects: []
 })
 
 export const mutations = {
-  setAuth(state, data) {
-    state.isAuth = data
+  SET_PROJECTS: (state, data) => {
+    state.projects = data
   }
 }
 
+const BASE_URL = 'http://localhost:3000/api'
+
 export const actions = {
-  login({ commit }) {
-    commit('setAuth', true)
+  initState({ dispatch }) {
+    return Promise.all(dispatch('getProjects'))
+  },
+  getProjects({ commit, state }, queries) {
+    return new Promise((resolve, reject) => {
+      const getProjectsRequest = new Request(BASE_URL + '/projects')
+      fetch(getProjectsRequest, {
+        method: 'GET'
+      })
+        .then((res) => {
+          if (res.status === 401) {
+            console.log('mysql err')
+            return reject(new Error('User unavailable!'))
+          } else {
+            return res.json()
+          }
+        })
+        .then((res) => {
+          commit('SET_PROJECTS', res.projects)
+          resolve()
+        })
+        .catch((error) => {
+          reject(error)
+        })
+    })
   }
 }
