@@ -1,5 +1,8 @@
 import colors from 'vuetify/es5/util/colors'
 
+require('dotenv').config();
+const { MYPAGE_DB_USER, MYPAGE_DB_PASSWORD, SERVER_IP} = process.env;
+
 export default {
   server: {
     port: 8000,
@@ -48,7 +51,7 @@ export default {
   /*
    ** Nuxt.js modules
    */
-  modules: ['@nuxtjs/pwa'],
+  modules: ['@nuxtjs/pwa', '@nuxtjs/dotenv'],
   /*
    ** vuetify module configuration
    ** https://github.com/nuxt-community/vuetify-module
@@ -78,5 +81,8 @@ export default {
      */
     extend(config, ctx) {}
   },
-  serverMiddleware: ['~/server/index.js']
+  serverMiddleware: ['~/server/index.js'],
+  env: {
+    MYPAGE_DB_USER, MYPAGE_DB_PASSWORD, SERVER_IP
+  }
 }

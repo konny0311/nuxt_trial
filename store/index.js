@@ -10,8 +10,7 @@ export const mutations = {
     state.projects = data
   }
 }
-
-const BASE_URL = 'http://localhost:3000/api'
+const BASE_URL = `http://${process.env.SERVER_IP}:8000/api`
 
 export const actions = {
   initState({ dispatch }) {

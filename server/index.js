@@ -11,7 +11,7 @@ const colSize = 4
 app.get('/projects', (req, res) => {
     const mysql = require('mysql');
     const connection = mysql.createConnection({
-      host : 'localhost',
+      socketPath : '/var/run/mysqld/mysqld.sock',
       user : process.env.MYPAGE_DB_USER,
       database: 'mypage',
       password: process.env.MYPAGE_DB_PASSWORD
