@@ -26,8 +26,16 @@ export default {
   components: {},
   computed: {
     projects() {
-      this.$store.dispatch('getProjects')
-      return this.$store.state.projects
+      const output = [
+        {
+          name: 'test-name',
+          summary: 'test-summary',
+          technology: 'Python',
+          link: 'https://github.com/konny0311',
+          flex: 4
+        }
+      ]
+      return output
     }
   }
 }

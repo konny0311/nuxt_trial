@@ -2,7 +2,7 @@
   <div>
     <v-row>
       <v-col>
-        <v-img src="/myimg.jpg" />
+        <v-img :max-height="500" :max-width="500" src="/myimg.jpg" />
       </v-col>
       <v-col>
         <h2>Who am I?</h2>
