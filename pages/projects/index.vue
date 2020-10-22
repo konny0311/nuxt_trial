@@ -23,19 +23,11 @@
 
 <script>
 export default {
-  components: {},
-  computed: {
-    projects() {
-      const output = [
-        {
-          name: 'test-name',
-          summary: 'test-summary',
-          technology: 'Python',
-          link: 'https://github.com/konny0311',
-          flex: 4
-        }
-      ]
-      return output
+  async asyncData({ $content }) {
+    const tmpProjects = await $content('projects').fetch()
+    const projects = tmpProjects.projects
+    return {
+      projects
     }
   }
 }

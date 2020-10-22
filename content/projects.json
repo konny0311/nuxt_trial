@@ -1,0 +1,19 @@
+{
+  "projects":[
+    {
+      "name": "1st test name",
+      "summary": "1st test summary",
+      "technology": "Python",
+      "link": "https://github.com/konny0311",
+      "flex": 4
+    },
+    {
+      "name": "2nd test name",
+      "summary": "2nd test summary",
+      "technology": "Java",
+      "link": "https://github.com/konny0311",
+      "flex": 4
+    }
+
+  ]
+}
