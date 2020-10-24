@@ -1,6 +1,13 @@
 <template>
   <v-app>
-    <v-navigation-drawer v-model="drawer" clipped permanent app>
+    <v-navigation-drawer
+      v-model="drawer"
+      temporary
+      hide-overlay
+      mobile-break-point
+      bottom
+      app
+    >
       <v-list>
         <v-list-item
           v-for="(item, i) in items"
@@ -18,7 +25,7 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-app-bar clipped-left app>
+    <v-app-bar app>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-toolbar-title v-text="title" />
       <v-spacer />
@@ -38,8 +45,8 @@ export default {
       drawer: false,
       items: [
         {
-          icon: 'mdi-apps',
-          title: 'Welcome',
+          icon: 'mdi-home',
+          title: 'Home',
           to: '/'
         },
         {
