@@ -14,7 +14,7 @@
   "dependencies": {
     "@nuxtjs/dotenv": "^1.4.1",
     "@nuxtjs/pwa": "^3.0.0-0",
-    "express": "^4.17.1",
+    "express": "^4.18.2",
     "mysql": "^2.18.1",
     "nuxt": "^2.12.2",
     "vuex-persistedstate": "^2.7.0"
